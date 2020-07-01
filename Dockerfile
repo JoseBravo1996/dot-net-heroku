@@ -9,8 +9,8 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["dot-net-heroku.csproj", ""]
 RUN dotnet restore "./dot-net-heroku.csproj"
-WORKDIR "/src/."
 COPY . .
+WORKDIR "/src/."
 RUN dotnet build "dot-net-heroku.csproj" -c Release -o /app/build
 
 FROM build AS publish
